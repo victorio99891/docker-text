@@ -25,4 +25,6 @@ pipeline {
       sh 'docker run -it -p 8091:8091 --name simple-rest simple-rest'
       }
     }
+
+   }
  }
