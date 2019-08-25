@@ -22,9 +22,15 @@ pipeline {
 
     stage('Publish Docker Image'){
       steps {
-      sh 'docker run -t -p 8091:8091 --name simple-rest -d simple-rest'
+      sh 'docker run -t -p 8081:8081 --name simple-rest -d simple-rest'
       }
     }
+
+    stage('Prune unused images'){
+          steps {
+          sh 'docker image prune -a -f'
+          }
+        }
 
    }
  }
