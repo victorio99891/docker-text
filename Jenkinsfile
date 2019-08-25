@@ -20,21 +20,27 @@ pipeline {
       }
     }
 
+    stage('Copy Docker Compose File') {
+      steps {
+        sh 'cp /var/jenkins_home/workspace/docker-text_master/docker-compose.yml docker-compose.yml'
+      }
+    }
+
     stage('Docker Compose Stop'){
       steps {
-        sh 'docker-compose -f /var/jenkins_home/workspace/docker-text_master@tmp/docker-compose.yml stop'
+        sh 'docker-compose stop'
       }
     }
 
     stage('Docker Compose Remove Containers'){
       steps {
-        sh 'docker-compose -f /var/jenkins_home/workspace/docker-text_master@tmp/docker-compose.yml rm -f'
+        sh 'docker-compose rm -f'
       }
     }
 
     stage('Docker Compose Up'){
       steps {
-        sh 'docker-compose -f /var/jenkins_home/workspace/docker-text_master@tmp/docker-compose.yml up -d'
+        sh 'docker-compose up -d'
       }
     }
 
