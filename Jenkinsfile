@@ -32,7 +32,7 @@ pipeline {
       }
     }
 
-    stage('Docker Compose Remove Containers'){
+    stage('Docker Compose Up'){
       steps {
         sh 'docker-compose up -d'
       }
