@@ -28,7 +28,7 @@ pipeline {
 
     stage('Docker Compose Stop'){
       steps {
-        sh 'docker-compose stop'
+        sh 'ls -lai && docker-compose stop'
       }
     }
 
