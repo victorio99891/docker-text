@@ -20,17 +20,29 @@ pipeline {
       }
     }
 
-    stage('Publish Docker Image'){
+    stage('Docker Compose Stop'){
       steps {
-      sh 'docker run -t -p 8081:8081 --name simple-rest -d simple-rest'
+        sh 'docker-compose stop'
+      }
+    }
+
+    stage('Docker Compose Remove Containers'){
+      steps {
+        sh 'docker-compose rm -f'
+      }
+    }
+
+    stage('Docker Compose Remove Containers'){
+      steps {
+        sh 'docker-compose up -d'
       }
     }
 
     stage('Prune unused images'){
-          steps {
-          sh 'docker image prune -a -f'
-          }
-        }
+      steps {
+       sh 'docker image prune -a -f'
+      }
+    }
 
    }
  }
