@@ -22,7 +22,7 @@ pipeline {
 
     stage('Publish Docker Image'){
       steps {
-      sh 'docker run -it -p 8091:8091 --name simple-rest -d simple-rest'
+      sh 'docker run -t -p 8091:8091 --name simple-rest -d simple-rest'
       }
     }
 
