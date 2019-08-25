@@ -15,6 +15,12 @@ pipeline {
     }
 
     stage('Build Docker Image') {
+       steps {
+            sh 'ls -lai'
+       }
+    }
+
+    stage('Build Docker Image') {
       steps {
         sh 'docker build -t simple-rest .'
       }
@@ -22,19 +28,19 @@ pipeline {
 
     stage('Docker Compose Stop'){
       steps {
-        sh 'docker-compose --file ./var/jenkins_home/workspace/docker-text_master/docker-compose.yml stop'
+        sh 'docker-compose stop'
       }
     }
 
     stage('Docker Compose Remove Containers'){
       steps {
-        sh 'docker-compose --file ./var/jenkins_home/workspace/docker-text_master/docker-compose.yml rm -f'
+        sh 'docker-compose rm -f'
       }
     }
 
     stage('Docker Compose Up'){
       steps {
-        sh 'docker-compose --file ./var/jenkins_home/workspace/docker-text_master/docker-compose.yml up -d'
+        sh 'docker-compose up -d'
       }
     }
 
