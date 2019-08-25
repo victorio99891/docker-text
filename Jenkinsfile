@@ -22,19 +22,19 @@ pipeline {
 
     stage('Docker Compose Stop'){
       steps {
-        sh 'docker-compose -f /application/docker-compose.yml stop'
+        sh 'docker-compose -f /var/jenkins_home/workspace/docker-text_master/docker-compose.yml stop'
       }
     }
 
     stage('Docker Compose Remove Containers'){
       steps {
-        sh 'docker-compose -f /application/docker-compose.yml rm -f'
+        sh 'docker-compose -f /var/jenkins_home/workspace/docker-text_master/docker-compose.yml rm -f'
       }
     }
 
     stage('Docker Compose Up'){
       steps {
-        sh 'docker-compose -f /application/docker-compose.yml up -d'
+        sh 'docker-compose -f /var/jenkins_home/workspace/docker-text_master/docker-compose.yml up -d'
       }
     }
 
