@@ -14,7 +14,7 @@ pipeline {
       }
     }
 
-    stage('Build Docker Image') {
+    stage('Show files') {
        steps {
             sh 'ls -lai'
        }
