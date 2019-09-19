@@ -26,7 +26,7 @@ public class TestController {
 
 
     @PostMapping("/log")
-    public void logItem(String message) {
+    public void logItem(@RequestBody String message) {
         log.error(message);
     }
 
