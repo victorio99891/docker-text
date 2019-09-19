@@ -1,16 +1,15 @@
 package pl.wiktor.dockerbuildtest.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.wiktor.dockerbuildtest.model.Message;
 
 import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/test")
+@Slf4j
 public class TestController {
 
 
@@ -23,6 +22,12 @@ public class TestController {
                 .message("First test message")
                 .created(LocalDateTime.now())
                 .build());
+    }
+
+
+    @PostMapping("/log")
+    public void logItem(String message) {
+        log.error(message);
     }
 
 }
